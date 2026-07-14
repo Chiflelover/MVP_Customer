@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DR.IANKA · Salud</title>
+  <!-- Fuente moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #f6fafd 0%, #e8f0f8 100%);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      padding: 1.5rem;
+    }
+
+    .card {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 3rem;
+      padding: 2.5rem 2rem 2.2rem;
+      box-shadow: 0 20px 40px -12px rgba(0, 40, 80, 0.25),
+                  0 8px 24px -6px rgba(0, 20, 40, 0.08);
+      text-align: center;
+      transition: transform 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* ----- LOGO con corazón ----- */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: #e8435e;  /* rojo corazón */
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px -6px rgba(232, 67, 94, 0.35);
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: #fff;
+      stroke: none;
+    }
+
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1a2b4a;
+      background: linear-gradient(135deg, #1a2b4a 0%, #2a7de1 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ----- TÍTULO ----- */
+    .title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #0b1a33;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .sub {
+      font-size: 1rem;
+      color: #4a5f7a;
+      margin-bottom: 2.2rem;
+      font-weight: 450;
+      letter-spacing: 0.01em;
+      background: rgba(42, 125, 225, 0.06);
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(42, 125, 225, 0.08);
+    }
+
+    /* ----- BOTÓN PRINCIPAL ----- */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #2a7de1;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0.9rem 2.8rem;
+      border-radius: 60px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 20px -6px rgba(42, 125, 225, 0.4);
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 1.8rem;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: #1f6bcb;
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px -8px rgba(42, 125, 225, 0.5);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ----- BADGE 24/7 ----- */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(10, 30, 50, 0.04);
+      padding: 0.45rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 450;
+      color: #1f3a5e;
+      border: 1px solid rgba(42, 125, 225, 0.10);
+      backdrop-filter: blur(2px);
+      letter-spacing: 0.01em;
+    }
+
+    .badge svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: #2a7de1;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ----- CHECKBOX (estilo decorativo) ----- */
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin: 1.2rem 0 0.4rem;
+      font-size: 0.95rem;
+      color: #4a5f7a;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #2a7de1;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .checkbox-item label {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.2rem 1.8rem;
+        border-radius: 2rem;
+      }
+
+      .title {
+        font-size: 1.7rem;
+      }
+
+      .sub {
+        font-size: 0.9rem;
+        padding: 0.2rem 1rem;
+      }
+
+      .btn-primary {
+        font-size: 1rem;
+        padding: 0.8rem 1.8rem;
+        max-width: 100%;
+      }
+
+      .logo-text {
+        font-size: 1.4rem;
+      }
+
+      .logo-icon {
+        width: 42px;
+        height: 42px;
+      }
+
+      .logo-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .title {
+        font-size: 1.4rem;
+      }
+
+      .badge {
+        font-size: 0.8rem;
+        padding: 0.3rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="card" role="main" aria-label="Tarjeta de orientación médica">
+
+    <!-- LOGO con corazón -->
+    <div class="logo" aria-label="Logo DR.IANKA">
+      <div class="logo-icon" aria-hidden="true">
+        <!-- SVG corazón sólido -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+      </div>
+      <span class="logo-text">DR.IANKA</span>
+    </div>
+
+    <!-- TÍTULO PRINCIPAL -->
+    <h1 class="title">¿Cómo te sientes hoy?</h1>
+
+    <!-- SUBTÍTULO / DESCRIPCIÓN -->
+    <p class="sub">Obtén orientación médica en menos de 2 minutos.</p>
+
+    <!-- BOTÓN PRINCIPAL "Consultar ahora" -->
+    <a href="formulario.html" class="btn-primary" role="button">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
+      </svg>
+      Consultar ahora
+    </a>
+
+    <!-- BADGE 24/7 (segunda mención, como en el diseño) -->
+    <div class="badge" style="margin-top: 0.8rem;">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+      <span>Disponible 24/7</span>
+    </div>
+
+  </main>
+
+</body>
+</html>
