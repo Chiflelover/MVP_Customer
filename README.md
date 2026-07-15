@@ -4,12 +4,12 @@ DR.IANKA es un asistente médico virtual interactivo que permite a los usuarios 
 
 ## Instalación
 
-Este proyecto está construido exclusivamente con tecnologías web nativas (HTML5, CSS3 y JavaScript vanilla), por lo que no requiere de dependencias externas complejas ni compiladores.
+Este proyecto está construido exclusivamente con tecnologías web nativas (HTML5, CSS3 y JavaScript vanilla), por lo que no requiere de dependencias externas complejas ni compiladores (MVP).
 
 Para ejecutar el proyecto localmente:
 
-1. Clona o descarga este repositorio en tu máquina local.
-2. Inicia un servidor web local en la carpeta raíz del proyecto. Si utilizas Visual Studio Code, puedes usar la extensión **Live Server**, o bien ejecutar desde tu terminal:
+1. Descargar este repositorio en tu máquina local.
+2. Iniciar un servidor web local en la carpeta raíz del proyecto. Si utilizas Visual Studio Code, puedes usar la extensión **Live Server**, o bien ejecutar desde tu terminal:
    ```bash
    # Si tienes Python instalado
    python -m http.server 8000
@@ -17,7 +17,11 @@ Para ejecutar el proyecto localmente:
    # O si usas Node.js (con serve)
    npx serve .
    ```
-3. Abre tu navegador y accede a la dirección local (por ejemplo, `http://localhost:8000` o `http://localhost:3000`).
+3. Abrir el navegador y accede a la dirección local (por ejemplo, `http://localhost:8000` o `http://localhost:3000`).
+
+Para ejecutar el proyecto en github pages:
+
+https://chiflelover.github.io/MVP_Customer/
 
 ## Uso
 
