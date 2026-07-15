@@ -1,0 +1,72 @@
+/* ============================================================
+   CARGA.CSS — Pantalla de análisis / loading
+   DR.IANKA · Plataforma de orientación médica
+============================================================ */
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0b1a33;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  font-size: 1.1rem;
+  color: #1f3a5e;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.desc {
+  font-size: 0.95rem;
+  color: #4a5f7a;
+  margin-bottom: 2rem;
+}
+
+/* Puntos de progreso animados */
+.progress-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #dce4ed;
+  animation: pulse 1.8s infinite ease-in-out;
+}
+
+.dot:nth-child(1) { animation-delay: 0s;     }
+.dot:nth-child(2) { animation-delay: 0.45s;  }
+.dot:nth-child(3) { animation-delay: 0.9s;   }
+.dot:nth-child(4) { animation-delay: 1.35s;  }
+
+@keyframes pulse {
+  0%, 100% {
+    background: #dce4ed;
+    transform: scale(1);
+  }
+  50% {
+    background: #2a7de1;
+    transform: scale(1.15);
+    box-shadow: 0 0 10px rgba(42, 125, 225, 0.4);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .title { font-size: 1.8rem; }
+  .sub   { font-size: 1rem; }
+  .desc  { font-size: 0.9rem; }
+  .dot   { width: 15px; height: 15px; }
+}
+
+@media (max-width: 380px) {
+  .title { font-size: 1.5rem; }
+  .dot   { width: 13px; height: 13px; }
+}

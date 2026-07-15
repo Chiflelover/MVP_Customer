@@ -1,0 +1,80 @@
+/* ============================================================
+   DIAGNOSTICO.CSS — Página de resultado/diagnóstico
+   DR.IANKA · Plataforma de orientación médica
+============================================================ */
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0b1a33;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.result-badge {
+  display: inline-block;
+  background: rgba(42, 125, 225, 0.08);
+  padding: 0.3rem 1.5rem;
+  border-radius: 60px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a2b4a;
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(42, 125, 225, 0.08);
+}
+
+.message {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #0b1a33;
+  margin: 0.8rem 0 1.8rem;
+}
+
+.recomendaciones {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.recomendaciones p {
+  font-weight: 500;
+  color: #1a2b4a;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.recomendacion-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  color: #1f3a5e;
+  padding: 0.25rem 0;
+}
+
+.recomendacion-item svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #2a7de1;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .title        { font-size: 1.7rem; }
+  .result-badge { font-size: 1rem; padding: 0.25rem 1.2rem; }
+  .message      { font-size: 1.1rem; }
+  .recomendaciones { padding: 1rem 1.2rem; }
+}
+
+@media (max-width: 380px) {
+  .title            { font-size: 1.4rem; }
+  .recomendacion-item { font-size: 0.9rem; }
+}

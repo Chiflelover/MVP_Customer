@@ -1,0 +1,76 @@
+/* ============================================================
+   TELECONSULTA.CSS — Selección de horario
+   DR.IANKA · Plataforma de orientación médica
+============================================================ */
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0b1a33;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  font-size: 1.1rem;
+  color: #4a5f7a;
+  margin-bottom: 2rem;
+  font-weight: 450;
+}
+
+/* Lista de horarios */
+.horarios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2.2rem;
+}
+
+.horario-item {
+  flex: 0 0 auto;
+  padding: 0.7rem 1.8rem;
+  border-radius: 60px;
+  border: 1.5px solid #dce4ed;
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a2b4a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  backdrop-filter: blur(2px);
+  min-width: 80px;
+}
+
+.horario-item:hover {
+  border-color: #2a7de1;
+  background: rgba(42, 125, 225, 0.05);
+  transform: scale(1.02);
+}
+
+.horario-item.active {
+  border-color: #2a7de1;
+  background: #2a7de1;
+  color: #fff;
+  box-shadow: 0 6px 16px -4px rgba(42, 125, 225, 0.35);
+}
+
+.horario-item input[type="radio"] { display: none; }
+
+/* Responsive */
+@media (max-width: 480px) {
+  .title { font-size: 1.7rem; }
+  .sub   { font-size: 1rem; }
+
+  .horario-item {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.95rem;
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 380px) {
+  .title { font-size: 1.4rem; }
+  .horario-item { font-size: 0.85rem; padding: 0.5rem 1.2rem; min-width: 60px; }
+}

@@ -1,494 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DR.IANKA · Formulario</title>
+  <meta name="description"
+    content="Completa tus datos y cuéntale tus síntomas a DR.IANKA para recibir orientación médica personalizada." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+    rel="stylesheet" />
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(145deg, #f6fafd 0%, #e8f0f8 100%);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      padding: 1.5rem;
-    }
-
-    .card {
-      max-width: 520px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-radius: 3rem;
-      padding: 2.5rem 2rem 2.2rem;
-      box-shadow: 0 20px 40px -12px rgba(0, 40, 80, 0.25),
-                  0 8px 24px -6px rgba(0, 20, 40, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-    }
-
-    /* ----- LOGO con corazón ----- */
-    .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .logo-icon {
-      width: 48px;
-      height: 48px;
-      background: #e8435e;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 16px -6px rgba(232, 67, 94, 0.35);
-      flex-shrink: 0;
-    }
-
-    .logo-icon svg {
-      width: 28px;
-      height: 28px;
-      fill: #fff;
-      stroke: none;
-    }
-
-    .logo-text {
-      font-size: 1.7rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #1a2b4a 0%, #2a7de1 80%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* ----- Encabezado del formulario (título + flecha) ----- */
-    .form-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: #2a7de1;
-      text-decoration: none;
-      background: rgba(42, 125, 225, 0.08);
-      width: 44px;
-      height: 44px;
-      border-radius: 60px;
-      transition: background 0.2s, transform 0.2s;
-      flex-shrink: 0;
-    }
-
-    .back-link:hover {
-      background: rgba(42, 125, 225, 0.15);
-      transform: scale(1.05);
-    }
-
-    .back-link:active {
-      transform: scale(0.92);
-    }
-
-    .form-title {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #0b1a33;
-      letter-spacing: -0.02em;
-    }
-
-    .form-sub {
-      font-size: 1rem;
-      color: #4a5f7a;
-      margin-bottom: 1.8rem;
-      padding-left: 0.2rem;
-      font-weight: 450;
-    }
-
-    /* ----- Campos del formulario ----- */
-    .form-group {
-      margin-bottom: 1.6rem;
-      text-align: left;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #1a2b4a;
-      margin-bottom: 0.4rem;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="number"] {
-      width: 100%;
-      padding: 0.8rem 1.2rem;
-      font-size: 1rem;
-      font-family: inherit;
-      border: 1.5px solid #dce4ed;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(2px);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-      color: #0b1a33;
-    }
-
-    .form-group input:focus {
-      border-color: #2a7de1;
-      box-shadow: 0 0 0 4px rgba(42, 125, 225, 0.15);
-    }
-
-    /* Radio buttons (Sexo) */
-    .radio-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem 2rem;
-      margin-top: 0.2rem;
-    }
-
-    .radio-group label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 450;
-      color: #1a2b4a;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .radio-group input[type="radio"] {
-      width: 18px;
-      height: 18px;
-      accent-color: #2a7de1;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    /* Checkbox Continuar */
-    .continue-group {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-top: 0.8rem;
-      justify-content: center;
-    }
-
-    .continue-group input[type="checkbox"] {
-      width: 22px;
-      height: 22px;
-      accent-color: #2a7de1;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-
-    .continue-group label {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #1a2b4a;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    /* Botón de enviar (opcional, pero lo añadimos para acción) */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: #2a7de1;
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 600;
-      padding: 0.9rem 2.8rem;
-      border-radius: 60px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 8px 20px -6px rgba(42, 125, 225, 0.4);
-      width: 100%;
-      max-width: 280px;
-      margin: 1.8rem auto 0;
-      letter-spacing: 0.01em;
-      text-decoration: none;
-    }
-
-    .btn-primary:hover {
-      background: #1f6bcb;
-      transform: scale(1.02);
-      box-shadow: 0 12px 28px -8px rgba(42, 125, 225, 0.5);
-    }
-
-    .btn-primary:active {
-      transform: scale(0.97);
-    }
-
-    .btn-primary svg {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      .card {
-        padding: 1.8rem 1.2rem 1.8rem;
-        border-radius: 2rem;
-      }
-
-      .form-title {
-        font-size: 1.5rem;
-      }
-
-      .back-link {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
-      }
-
-      .radio-group {
-        gap: 0.8rem 1.2rem;
-      }
-
-      .btn-primary {
-        font-size: 1rem;
-        padding: 0.8rem 1.8rem;
-        max-width: 100%;
-      }
-
-      .logo-text {
-        font-size: 1.4rem;
-      }
-
-      .logo-icon {
-        width: 42px;
-        height: 42px;
-      }
-
-      .logo-icon svg {
-        width: 24px;
-        height: 24px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .form-title {
-        font-size: 1.3rem;
-      }
-      .form-group label {
-        font-size: 0.85rem;
-      }
-      .continue-group label {
-        font-size: 1rem;
-      }
-    }
-
-    /* Drag and Drop styles */
-    .symptoms-pool {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.2rem;
-      padding: 0.8rem;
-      background: rgba(0, 0, 0, 0.02);
-      border-radius: 16px;
-      border: 1px dashed rgba(0, 0, 0, 0.08);
-      min-height: 60px;
-    }
-
-    .symptom-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: #fff;
-      border: 1.5px solid #dce4ed;
-      padding: 0.5rem 0.9rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #1a2b4a;
-      cursor: grab;
-      user-select: none;
-      transition: all 0.2s ease;
-    }
-
-    .symptom-chip:hover {
-      border-color: #2a7de1;
-      background: rgba(42, 125, 225, 0.02);
-      transform: translateY(-1px);
-    }
-
-    .symptom-chip.dragging {
-      opacity: 0.4;
-    }
-
-    .symptoms-tray {
-      min-height: 100px;
-      border: 2px dashed #2a7de1;
-      border-radius: 16px;
-      background: rgba(42, 125, 225, 0.03);
-      padding: 0.8rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      align-content: flex-start;
-      align-items: center;
-      transition: background-color 0.2s ease, border-color 0.2s ease;
-      position: relative;
-    }
-
-    .symptoms-tray.dragover {
-      background: rgba(42, 125, 225, 0.1);
-      border-color: #1f6bcb;
-    }
-
-    .symptoms-tray-placeholder {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #4a5f7a;
-      font-size: 0.9rem;
-      font-weight: 450;
-      pointer-events: none;
-      text-align: center;
-      width: 90%;
-    }
-
-    /* Custom Alert Overlay */
-    .custom-alert-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(10, 30, 50, 0.4);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 9999;
-    }
-
-    .custom-alert-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* Custom Alert Box */
-    .custom-alert-box {
-      background: #fff;
-      border-radius: 2rem;
-      padding: 2.2rem 2rem;
-      max-width: 380px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 24px 48px -12px rgba(0, 40, 80, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      transform: scale(0.9);
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .custom-alert-overlay.active .custom-alert-box {
-      transform: scale(1);
-    }
-
-    /* Icon in Alert */
-    .custom-alert-icon {
-      width: 56px;
-      height: 56px;
-      background: rgba(232, 67, 94, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.2rem;
-    }
-
-    .custom-alert-icon svg {
-      width: 32px;
-      height: 32px;
-      stroke: #e8435e;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: none;
-    }
-
-    /* Text & Buttons */
-    .custom-alert-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #0b1a33;
-      margin-bottom: 0.5rem;
-    }
-
-    .custom-alert-message {
-      font-size: 0.95rem;
-      color: #4a5f7a;
-      line-height: 1.5;
-      margin-bottom: 1.6rem;
-    }
-
-    .custom-alert-btn {
-      background: #2a7de1;
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 0.75rem 2rem;
-      border-radius: 40px;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      box-shadow: 0 6px 16px -4px rgba(42, 125, 225, 0.35);
-      transition: all 0.2s ease;
-    }
-
-    .custom-alert-btn:hover {
-      background: #1f6bcb;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px -4px rgba(42, 125, 225, 0.4);
-    }
-
-    .custom-alert-btn:active {
-      transform: scale(0.97);
-    }
-  </style>
+  <!-- CSS Separados -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/formulario.css" />
 </head>
+
 <body>
 
-  <!-- Modal de alerta personalizada -->
+  <!-- ========== CUSTOM ALERT ========== -->
   <div id="customAlert" class="custom-alert-overlay" role="dialog" aria-modal="true" aria-labelledby="customAlertTitle">
     <div class="custom-alert-box">
       <div class="custom-alert-icon">
@@ -499,235 +31,139 @@
         </svg>
       </div>
       <h3 class="custom-alert-title" id="customAlertTitle">Atención</h3>
-      <p class="custom-alert-message" id="customAlertMessage">Por favor completa todos los campos obligatorios.</p>
+      <p class="custom-alert-message" id="customAlertMessage">Por favor completa todos los campos.</p>
       <button class="custom-alert-btn" id="customAlertBtn">Entendido</button>
     </div>
   </div>
 
-  <main class="card" role="main" aria-label="Formulario de orientación médica">
+  <main class="card" role="main" aria-label="Formulario y chatbot de orientación médica">
 
-    <!-- LOGO con corazón (DR.IANKA) -->
-    <div class="logo" aria-label="Logo DR.IANKA">
-      <div class="logo-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-        </svg>
-      </div>
-      <span class="logo-text">DR.IANKA</span>
-    </div>
+    <!-- ============================================================
+         VISTA 1 – DATOS DEL USUARIO
+    ============================================================ -->
+    <section id="formView" class="view" aria-label="Datos del usuario">
 
-    <!-- Encabezado: flecha ← + "Formulario" -->
-    <div class="form-header">
-      <a href="index.html" class="back-link" aria-label="Volver atrás">←</a>
-      <h1 class="form-title">Formulario</h1>
-    </div>
-
-    <p class="form-sub">Cuéntanos qué sucede</p>
-
-    <!-- Formulario -->
-    <form action="#" method="post" autocomplete="off">
-
-      <!-- Edad -->
-      <div class="form-group">
-        <label for="edad">Edad</label>
-        <input type="number" id="edad" name="edad" placeholder="Ej. 32" min="0" max="120" />
+      <!-- LOGO -->
+      <div class="logo" aria-label="Logo DR.IANKA">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </div>
+        <span class="logo-text">DR.IANKA</span>
       </div>
 
-      <!-- Sexo -->
-      <div class="form-group">
-        <label>Sexo</label>
-        <div class="radio-group">
-          <label>
-            <input type="radio" name="sexo" value="hombre" />
-            Hombre
-          </label>
-          <label>
-            <input type="radio" name="sexo" value="mujer" />
-            Mujer
-          </label>
-          <label>
-            <input type="radio" name="sexo" value="otro" />
-            Otro
-          </label>
+      <!-- Step indicator -->
+      <div class="step-indicator" aria-hidden="true">
+        <div class="step-dot active" id="stepDot1"></div>
+        <div class="step-dot" id="stepDot2"></div>
+      </div>
+
+      <!-- Header -->
+      <div class="form-header">
+        <a href="index.html" class="back-link" aria-label="Volver atrás">←</a>
+        <h1 class="form-title">Tus datos</h1>
+      </div>
+      <p class="form-sub">Primero cuéntanos un poco sobre ti</p>
+
+      <!-- Formulario -->
+      <form id="userDataForm" autocomplete="off" novalidate>
+
+        <!-- Nombre (opcional, para personalizar el chat) -->
+        <div class="form-group">
+          <label for="nombre">Tu nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. María" />
+        </div>
+
+        <!-- Edad -->
+        <div class="form-group">
+          <label for="edad">Edad</label>
+          <input type="number" id="edad" name="edad" placeholder="Ej. 32" min="0" max="120" required />
+        </div>
+
+        <!-- Sexo -->
+        <div class="form-group">
+          <label>Sexo</label>
+          <div class="radio-group" role="radiogroup" aria-label="Selecciona tu sexo">
+            <label class="radio-pill" id="pill-hombre">
+              <input type="radio" name="sexo" value="hombre" />
+              <span class="pill-dot"></span>
+              Hombre
+            </label>
+            <label class="radio-pill" id="pill-mujer">
+              <input type="radio" name="sexo" value="mujer" />
+              <span class="pill-dot"></span>
+              Mujer
+            </label>
+            <label class="radio-pill" id="pill-otro">
+              <input type="radio" name="sexo" value="otro" />
+              <span class="pill-dot"></span>
+              Otro
+            </label>
+          </div>
+        </div>
+
+        <!-- Botón continuar -->
+        <button type="submit" class="btn-primary" id="btnContinuar">
+          Continuar al chat
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </button>
+
+      </form>
+    </section>
+
+    <!-- ============================================================
+         VISTA 2 – CHAT CON DR.IANKA
+    ============================================================ -->
+    <section id="chatView" class="view hidden" aria-label="Chat con DR.IANKA">
+
+      <!-- Header del chat -->
+      <div class="chat-header">
+        <button class="chat-header-back" id="btnVolverForm" aria-label="Volver al formulario">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M11 6l-6 6 6 6" />
+          </svg>
+        </button>
+        <div class="chat-avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </div>
+        <div class="chat-header-info">
+          <div class="chat-header-name">DR.IANKA</div>
+          <div class="chat-header-status">
+            <span class="status-dot"></span>
+            Asistente médico virtual
+          </div>
         </div>
       </div>
 
-      <!-- Síntomas -->
-      <div class="form-group">
-        <label>Arrastra tus síntomas a la bandeja de abajo</label>
-        
-        <div class="symptoms-pool" id="symptomsPool">
-          <div class="symptom-chip" draggable="true" id="s-fiebre">Fiebre</div>
-          <div class="symptom-chip" draggable="true" id="s-tos">Tos</div>
-          <div class="symptom-chip" draggable="true" id="s-cabeza">Dolor de cabeza</div>
-          <div class="symptom-chip" draggable="true" id="s-respirar">Dificultad para respirar</div>
-          <div class="symptom-chip" draggable="true" id="s-garganta">Dolor de garganta</div>
-          <div class="symptom-chip" draggable="true" id="s-olfato">Pérdida de olfato/gusto</div>
-          <div class="symptom-chip" draggable="true" id="s-cansancio">Cansancio extremo</div>
-        </div>
+      <!-- Mensajes -->
+      <div class="chat-messages" id="chatMessages" aria-live="polite" aria-label="Historial del chat"></div>
 
-        <label>Bandeja de Síntomas Seleccionados</label>
-        <div class="symptoms-tray" id="symptomsTray">
-          <div class="symptoms-tray-placeholder" id="trayPlaceholder">Suelta los síntomas aquí o haz clic en ellos para agregarlos</div>
-        </div>
+      <!-- Input área -->
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Escribe tus síntomas aquí..."
+          aria-label="Escribe tu mensaje" autocomplete="off" />
+        <button class="chat-send-btn" id="chatSendBtn" aria-label="Enviar mensaje">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
+          </svg>
+        </button>
       </div>
 
-      <!-- Hace cuánto comenzaron -->
-      <div class="form-group">
-        <label for="tiempo">Hace cuánto comenzaron</label>
-        <input type="text" id="tiempo" name="tiempo" placeholder="Ej. 2 días, 1 semana..." />
-      </div>
-
-      <!-- Botón de envío (opcional, pero le da funcionalidad) -->
-      <button type="submit" class="btn-primary">
-        <svg viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 6v6l4 2" />
-        </svg>
-        Enviar
-      </button>
-    </form>
+    </section>
 
   </main>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const pool = document.getElementById('symptomsPool');
-      const tray = document.getElementById('symptomsTray');
-      const placeholder = document.getElementById('trayPlaceholder');
-      const form = document.querySelector('form');
-      const chips = document.querySelectorAll('.symptom-chip');
-
-      function updatePlaceholder() {
-        // count elements in tray ignoring placeholder
-        const chipsInTray = tray.querySelectorAll('.symptom-chip');
-        if (chipsInTray.length > 0) {
-          placeholder.style.opacity = '0';
-        } else {
-          placeholder.style.opacity = '1';
-        }
-      }
-
-      // Drag and drop implementation
-      chips.forEach(chip => {
-        chip.addEventListener('dragstart', (e) => {
-          chip.classList.add('dragging');
-          e.dataTransfer.setData('text/plain', chip.id);
-        });
-
-        chip.addEventListener('dragend', () => {
-          chip.classList.remove('dragging');
-        });
-
-        // Click to toggle (great for mobile/accessibility)
-        chip.addEventListener('click', () => {
-          if (chip.parentNode === pool) {
-            tray.appendChild(chip);
-          } else {
-            pool.appendChild(chip);
-          }
-          updatePlaceholder();
-        });
-      });
-
-      tray.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        tray.classList.add('dragover');
-      });
-
-      tray.addEventListener('dragleave', () => {
-        tray.classList.remove('dragover');
-      });
-
-      tray.addEventListener('drop', (e) => {
-        e.preventDefault();
-        tray.classList.remove('dragover');
-        const id = e.dataTransfer.getData('text/plain');
-        const chip = document.getElementById(id);
-        if (chip) {
-          tray.appendChild(chip);
-          updatePlaceholder();
-        }
-      });
-
-      pool.addEventListener('dragover', (e) => {
-        e.preventDefault();
-      });
-
-      pool.addEventListener('drop', (e) => {
-        e.preventDefault();
-        const id = e.dataTransfer.getData('text/plain');
-        const chip = document.getElementById(id);
-        if (chip) {
-          pool.appendChild(chip);
-          updatePlaceholder();
-        }
-      });
-
-      // Custom Alert helper functions
-      const alertOverlay = document.getElementById('customAlert');
-      const alertMessage = document.getElementById('customAlertMessage');
-      const alertBtn = document.getElementById('customAlertBtn');
-
-      function showCustomAlert(msg) {
-        alertMessage.textContent = msg;
-        alertOverlay.classList.add('active');
-      }
-
-      alertBtn.addEventListener('click', () => {
-        alertOverlay.classList.remove('active');
-      });
-
-      // Close modal on escape key or clicking outside
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') alertOverlay.classList.remove('active');
-      });
-
-      alertOverlay.addEventListener('click', (e) => {
-        if (e.target === alertOverlay) alertOverlay.classList.remove('active');
-      });
-
-      // Submit form
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const edad = document.getElementById('edad').value.trim();
-        const selectedSexo = document.querySelector('input[name="sexo"]:checked');
-        const selectedChips = tray.querySelectorAll('.symptom-chip');
-        const selectedSymptoms = Array.from(selectedChips).map(chip => chip.textContent);
-        const tiempo = document.getElementById('tiempo').value.trim();
-
-        if (!edad) {
-          showCustomAlert('Por favor, ingresa tu edad.');
-          return;
-        }
-
-        if (!selectedSexo) {
-          showCustomAlert('Por favor, selecciona tu sexo.');
-          return;
-        }
-
-        if (selectedSymptoms.length === 0) {
-          showCustomAlert('Por favor, arrastra o selecciona al menos un síntoma.');
-          return;
-        }
-
-        if (!tiempo) {
-          showCustomAlert('Por favor, ingresa hace cuánto comenzaron tus síntomas.');
-          return;
-        }
-
-        // Store selected symptoms in sessionStorage
-        sessionStorage.setItem('selectedSymptoms', JSON.stringify(selectedSymptoms));
-        sessionStorage.setItem('edad', edad);
-        sessionStorage.setItem('sexo', selectedSexo.value);
-        sessionStorage.setItem('tiempo', tiempo);
-
-        // Redirect to carga.html
-        window.location.href = 'carga.html';
-      });
-    });
-  </script>
+  <!-- JS Separado -->
+  <script src="js/formulario.js"></script>
 
 </body>
+
 </html>
