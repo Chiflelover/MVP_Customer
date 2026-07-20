@@ -20,6 +20,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatSendBtn   = document.getElementById('chatSendBtn');
 
   // ============================================================
+  // CONTADOR DE USO DEL BOT (localStorage)
+  // ============================================================
+  const botUsageStorageKey = 'drIankaBotUsageCount';
+
+  function getBotUsageCount() {
+    try {
+      return Number(localStorage.getItem(botUsageStorageKey) || 0);
+    } catch (error) {
+      console.warn('No se pudo leer el contador del bot:', error);
+      return 0;
+    }
+  }
+
+  function incrementBotUsageCount() {
+    const nextCount = getBotUsageCount() + 1;
+    try {
+      localStorage.setItem(botUsageStorageKey, String(nextCount));
+    } catch (error) {
+      console.warn('No se pudo guardar el contador del bot:', error);
+    }
+    return nextCount;
+  }
+
+  window.__drIankaBotUsage = {
+    getCount: getBotUsageCount,
+    reset: () => {
+      try {
+        localStorage.removeItem(botUsageStorageKey);
+      } catch (error) {
+        console.warn('No se pudo reiniciar el contador del bot:', error);
+      }
+    }
+  };
+
+  // ============================================================
   // CUSTOM ALERT
   // ============================================================
   const alertOverlay = document.getElementById('customAlert');
@@ -77,6 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const email  = document.getElementById('email').value.trim();
     sessionStorage.setItem('dni', dni);
     if (email) sessionStorage.setItem('email', email);
+
+    incrementBotUsageCount();
 
     formView.classList.add('fade-out');
     setTimeout(() => {
