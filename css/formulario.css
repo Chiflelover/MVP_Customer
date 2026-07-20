@@ -52,6 +52,13 @@
 .logo-icon svg {
   width: 26px;
   height: 26px;
+  fill: #fff;
+  stroke: #fff;
+}
+
+.logo-icon svg path {
+  fill: #fff;
+  stroke: #fff;
 }
 
 .logo-text {
@@ -121,7 +128,8 @@
 }
 
 .form-group input[type="number"],
-.form-group input[type="text"] {
+.form-group input[type="text"],
+.form-group input[type="email"] {
   width: 100%;
   padding: 0.8rem 1.2rem;
   font-size: 1rem;

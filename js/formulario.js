@@ -57,8 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
   userDataForm.addEventListener('submit', e => {
     e.preventDefault();
     const edad = document.getElementById('edad').value.trim();
-    const sexo = document.querySelector('input[name="sexo"]:checked');
+    const dni   = document.getElementById('dni').value.trim();
+    const sexo  = document.querySelector('input[name="sexo"]:checked');
 
+    if (!dni || !/^\d{7,8}$/.test(dni)) {
+      showAlert('Por favor, ingresa un DNI válido de 7 u 8 dígitos.');
+      return;
+    }
     if (!edad || isNaN(edad) || +edad <= 0 || +edad > 120) {
       showAlert('Por favor, ingresa una edad válida.');
       return;
@@ -69,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const nombre = document.getElementById('nombre').value.trim();
-    sessionStorage.setItem('edad', edad);
-    sessionStorage.setItem('sexo', sexo.value);
-    if (nombre) sessionStorage.setItem('nombre', nombre);
+    const email  = document.getElementById('email').value.trim();
+    sessionStorage.setItem('dni', dni);
+    if (email) sessionStorage.setItem('email', email);
 
     formView.classList.add('fade-out');
     setTimeout(() => {
